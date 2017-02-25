@@ -19,3 +19,16 @@ for(i in 1:length(DRG1)){
   drgphenos<-merge(drgphenos,drg,by="CLONE",all=T)
 }
 rownames(drgphenos)<-drgphenos$CLONE
+
+
+#####on the works using sparkR
+traits<-c("a","b","c")
+lmerf <- function(traits,pheno) {
+model<-lmer(data=pheno,formula = get(traits[i]) ~ checks + (1|clone) )
+summary(model)
+}
+# Return a list of model's summaries
+model.summaries <- spark.lapply(traits, lmerf)
+
+# Print the summary of each model
+print(model.summaries)
