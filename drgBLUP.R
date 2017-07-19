@@ -1,3 +1,5 @@
+
+####code by Uche Okeke
 library(foreach)
 library(doParallel)
 deregress<-function(model, trait){
